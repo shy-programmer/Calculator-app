@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Calculator App</title>
+</head>
+<body>
+    <div class="calculator">
+        <div class="display">
+            <span class="eval"></span>
+            <span class="calc-screen">0</span>
+        </div>
+        <div class="calc-btns">
+            <div class="calc-numbers">
+                <button value="1" id="1">1</button>
+                <button value="2" id="2">2</button>
+                <button value="3" id="3">3</button>
+                <button value="4" id="4">4</button>
+                <button value="5" id="5">5</button>
+                <button value="6" id="6">6</button>
+                <button value="7" id="7">7</button>
+                <button value="8" id="8">8</button>
+                <button value="9" id="9">9</button>
+                <button value="." id="period">.</button>
+                <button value="0" id="0">0</button>
+                <button value="Backspace" id="Backspace" class="material-icons">backspace</button>
+            </div>
+            <div class="calc-func">
+                <div class="calc-func-1">
+                    <button value="*" id="multiplication">x</button>
+                    <button value="/" id="division">&divide;</button>
+                    <button value="+" id="addition">+</button>
+                    <button value="-" id="subtraction">-</button>
+                    <button value="^" id="exponential">^</button>
+                    <button value="clear" id="clear">C</button>
+                </div>
+                <button value="equal" id="equal">=</button>
+            </div>
+        </div>
+    </div>
+    <div class="calc-history"></div>
+    
+    <script type="module" src="script.js"></script>
+</body>
+</html>
