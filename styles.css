@@ -202,9 +202,16 @@ body {
 .calc-history {
     flex-direction: row;
     flex-wrap: wrap;
-    max-width: 95vw;
     width: 95vw;
     height: 20vh;
+    max-width: 100%;}
+
+.calc-history span {
+    height: 20%;
+}
+
+.calc-history:empty {
+    display: none;
 }
 
 }

@@ -49,6 +49,9 @@ function numberClick(e) {
         calcScreen.innerText = "0";
       }   
     }
+    else if (calcScreen.innerText.length >= 16) {
+        return; // Prevent further input if the screen is full
+    }
     else if (e.target.id === "period") {
         if (calcScreen.innerText.includes(".")) {
         }
