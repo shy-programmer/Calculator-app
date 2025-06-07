@@ -27,14 +27,17 @@ calcEqual.addEventListener("click", equalClick);
 
 // Adding event listener for keyboard input
 document.addEventListener("keydown", (e) => {
+    // For when a number is clicked
     if (nums.includes(e.key)) {
         let numClicked = document.querySelector(`.calc-numbers button[value="${e.key}"]`);
         numberClick({ target: numClicked });
     }
+    // For when an operator is clicked
     if (funcs.includes(e.key)) {
         let funcClicked = document.querySelector(`.calc-func-1 button[value="${e.key}"]`);
         funcClick({ target: funcClicked });
     }
+    // For when the equal or enter is clicked
     if (e.key === "Enter" || e.key === "=") {
         equalClick({ target: calcEqual });
     }
@@ -43,15 +46,18 @@ document.addEventListener("keydown", (e) => {
 
 // Fuction to handle number button clicks
 function numberClick(e) {
+    //  For backspace
     if (e.target.id === "Backspace") {
       calcScreen.innerText = calcScreen.innerText.slice(0, -1);
       if (calcScreen.innerText === "" ) {
         calcScreen.innerText = "0";
       }   
     }
-    else if (calcScreen.innerText.length >= 15) {
+    // For preventing excessive digits
+    else if (calcScreen.innerText.length >= 15 && !next) {
         alert("can't enter more than 16 digits");
     }
+    // For period
     else if (e.target.id === "period") {
         if (calcScreen.innerText.includes(".")) {
         }
@@ -62,6 +68,7 @@ function numberClick(e) {
             calcScreen.innerText += e.target.value;
         }
     }
+    // For other numbers
     else {
         if (calcScreen.innerText === "0" || next) {
             calcScreen.innerText = e.target.value;
@@ -76,20 +83,24 @@ function numberClick(e) {
 
 // Function to handle operator button clicks
 function funcClick(e) {
-    let symbol = e.target.value 
+    let symbol = e.target.value // Get the symbol of the operator clicked
+    // For clear button
     if (e.target.value === "clear") {
         calculation.innerText = "";
         calcScreen.innerText = "0"
     }
-
+    // For other operators
     else {
+        // If calculator screen is empty
         if (calculation.innerText.length === 0 && calcScreen.innerText === "0") {
-            
+            // Do nothing
         }
+        // To change the selected operator
         else if (calculation.innerText.length > 0 && next) {
             calculation.innerText = calculation.innerText.slice(0, -1)
             calculation.innerText += symbol
     }
+        // To add operator
         else {
             calculation.innerText += calcScreen.innerText
             calcScreen.innerText = eval(expo(calculation.innerText))
@@ -103,10 +114,12 @@ function funcClick(e) {
 
 // Function to handle equal button click
 function equalClick(e) {
+    // For empty screen, do nothing
     if (calculation.innerText.length === 0) {}
+    // For non-empty screen
     else {
         let calc = calculation.innerText
-
+        
         if (!next) {
         calc += calcScreen.innerText 
         calcScreen.innerText = eval(expo(calc))
